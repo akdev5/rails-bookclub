@@ -10,18 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_230832) do
+ActiveRecord::Schema.define(version: 2020_07_28_213214) do
 
   create_table "books", force: :cascade do |t|
     t.string "author"
     t.string "title"
     t.text "description"
     t.integer "user_id", null: false
-    t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["genre_id"], name: "index_books_on_genre_id"
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "books_genres", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "book_id"
+    t.index ["book_id"], name: "index_books_genres_on_book_id"
+    t.index ["genre_id"], name: "index_books_genres_on_genre_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -46,7 +51,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_230832) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "books", "genres"
   add_foreign_key "books", "users"
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "users"
