@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
+    
     has_many :books
     has_many :received_comments, through: :books, source: :comments 
     has_many :comments
@@ -7,8 +8,5 @@ class User < ApplicationRecord
 
     validates :username, :email, presence: true
     validates :email, uniqueness: true
-    validates :password, confirmation: true
-    validates :password_confirmation, presence: true
     
-
 end
