@@ -4,11 +4,15 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  get '/users/:id', to: 'users#show', as: 'user'
 
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
+  get '/signout', to: 'sessions#destroy'
   delete '/signout', to: 'sessions#destroy'
+
+
+
+
 
 
   resources :users, only: [:new, :create, :show]

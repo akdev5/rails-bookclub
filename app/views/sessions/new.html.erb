@@ -1,8 +1,8 @@
-<h1>Log In</h1>
-<%= form_with(url: '/login') do |f|%>
+<h1>Sign In</h1>
+<%= form_with(url: '/signin') do |f|%>
     <%= f.label :email %>
     <%= f.email_field :email %><br><br>
     <%= f.label :password %>
     <%= f.password_field :password %><br><br>
-    <%= f.submit "Log In"%>
+    <%= f.submit "Sign In"%>
 <% end %>
