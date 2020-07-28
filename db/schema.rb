@@ -18,10 +18,8 @@ ActiveRecord::Schema.define(version: 2020_07_27_230832) do
     t.text "description"
     t.integer "user_id", null: false
     t.integer "genre_id", null: false
-    t.integer "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["comment_id"], name: "index_books_on_comment_id"
     t.index ["genre_id"], name: "index_books_on_genre_id"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
@@ -48,7 +46,6 @@ ActiveRecord::Schema.define(version: 2020_07_27_230832) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "books", "comments"
   add_foreign_key "books", "genres"
   add_foreign_key "books", "users"
   add_foreign_key "comments", "books"
