@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id 
             redirect_to user_path(user)
         else
-            flash[:message] = "Username or password not valid. Please try again."
             redirect_to '/signin', alert: "Username or password not valid. Please try again."
         end
     end
