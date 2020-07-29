@@ -10,12 +10,10 @@ Rails.application.routes.draw do
   get '/signout', to: 'sessions#destroy'
   delete '/signout', to: 'sessions#destroy'
 
-
-
-
-
-
   resources :users, only: [:new, :create, :show]
   resources :comments
   resources :books
+
+  get 'auth/:provider/callback', to: 'sessions#omniauth'
+  
 end
