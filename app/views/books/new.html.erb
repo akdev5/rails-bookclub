@@ -1,2 +1,11 @@
-<h1> Add a Book to the Reading List </h1>
-<%= render 'form' %>
+<form action='/books' method="post">
+<h2>Add a Book to the Reading List:</h2><br>
+  <input type="text" name="title" placeholder="Title"><br><br>
+  <input type="text" name="author" placeholder="Author"><br><br>
+
+
+  <strong>Blurb:<br><br></strong>
+  <textarea name="description" rows="10" cols="80" id="description"></textarea><br>
+  
+  <strong><input type="submit" value="Submit Book"></strong>
+</form>
