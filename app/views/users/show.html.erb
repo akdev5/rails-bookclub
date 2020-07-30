@@ -1,1 +1,4 @@
-<h1>View Users Books and Comments Here</h1>
+<h1><%= @user.name %>'s Books</h1>
+<% @user.books.each do |book| %>
+    <%= link_to book.title, book_path(book) %><br>
+<% end %>

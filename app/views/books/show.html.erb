@@ -1,6 +1,11 @@
-<h1> <%= @book.title %> </h1>
-<h2> <%= @book.author %> <i><small> added by: <%= @book.user.name %> </small> </i></h2>
+<h1> <%= @book.title %> <small> by <%= @book.author %></small> </h1>
+<h2><i><small> added by: <%= @book.user.name %> </small> </i></h2><br>
+<% @book.genres.each do |genre| %>
+    <i><%= genre.name %> // </i>
+<% end %><br><br>
+
 <div>
-<h3> <%= @book.description %>
+<%= @book.description %>
 </div>
-<%= link_to 'Edit', '/book/:id/edit' %>
+<br><%= link_to 'Edit', edit_book_path(@book) %>
+<br><%= link_to 'Delete', @book, method: :delete, data: {confirm: "Delete this book?"} %>

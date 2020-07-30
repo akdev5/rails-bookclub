@@ -35,9 +35,9 @@ class BooksController < ApplicationController
     def show
     end
 
-    def delete
+    def destroy
         @book.destroy
-        redirect_to book_path
+        redirect_to books_path
     end
 
 private
@@ -47,7 +47,7 @@ private
     end
 
     def book_params
-        params.require(:book).permit(:author, :genre_id, :title, :description)
+        params.require(:book).permit(:author, :title, :description, genre_ids:[])
     end
 
     def redirect_if_not_user
