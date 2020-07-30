@@ -12,7 +12,6 @@ class BooksController < ApplicationController
 
     def create
         @book = current_user.books.build(book_params)
-        @genres = Genre.all
         if @book.valid?
             @book.save
             redirect_to book_path(@book)
@@ -35,7 +34,7 @@ class BooksController < ApplicationController
 
     def show
         find_book
-        @book_genres = BooksGenre.where(book_id: params[:id])
+        # @book_genres = BooksGenre.where(book_id: params[:id])
     end
 
     def delete
@@ -50,11 +49,11 @@ private
     end
 
     def book_params
-        params.require(:book).permit(:author, :genre_ids, :title, :description)
+        params.require(:book).permit(:author, :genre_id, :title, :description)
     end
 
     def redirect_if_not_user
-        if @film.user != current_user
+        if @book.user != current_user
             redirect_to user_path(current_user), alert: "You do not have permission to edit this book."
             
         end
