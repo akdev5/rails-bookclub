@@ -1,9 +1,9 @@
 <%= flash[:message] %>
 <h2> Reading List </h2>
-<% @books.each do |book| %>
 <div>
-  <strong><a href="/books/<%= book.id %>" > <%= book.title %> <small>by</small> <i><%= book.author %></i></a></strong>
-  <% end %>
-
+<% @books.each do |book| %>
+  <strong><%= link_to 'book.name', '/book/:id' %></strong><small>by</small><strong><%= book.author %></strong>
+<% end %>
 </div> 
-<br><br><strong><a href="/books/new" > Add a Book </a></strong>
+<br><br><strong><%= link_to 'Add a Book', '/books/new' %></strong>
+

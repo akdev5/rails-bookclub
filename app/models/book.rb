@@ -4,6 +4,6 @@ class Book < ApplicationRecord
     has_many :comments
     has_many :users, through: :comments
     
-    validates :title, :author, :description, presence: true
+    validates :title, :author, :genre, :description, presence: true
         
 end

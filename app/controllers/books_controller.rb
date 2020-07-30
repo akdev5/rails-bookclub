@@ -1,13 +1,12 @@
 class BooksController < ApplicationController
     before_action :find_book, :redirect_if_not_user, only: [:show, :edit, :update, :destroy]
+    
+    def index
+        @books = Book.all
+    end
 
     def new
         @book = Book.new
-        @genres = Genre.all
-    end
-
-    def index
-        @books = Book.all
         @genres = Genre.all
     end
 
@@ -39,7 +38,7 @@ class BooksController < ApplicationController
         @book_genres = BooksGenre.where(book_id: params[:id])
     end
 
-    def destroy
+    def delete
         @book.destroy
         redirect_to book_path
     end
