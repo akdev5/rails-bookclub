@@ -1,7 +1,7 @@
 <h1> <%= @book.title %> <small> by <%= @book.author %></small> </h1>
 <h2><i><small> added by: <%= @book.user.name %> </small> </i></h2><br>
 <% @book.genres.each do |genre| %>
-    <i><%= genre.name %> // </i>
+    <i><%= link_to genre.name, genre_path(genre) %> // </i>
 <% end %><br><br>
 
 <div>

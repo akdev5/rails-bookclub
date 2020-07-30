@@ -1,0 +1,5 @@
+<h1>Genres</h1>
+<h2>Select a genre to view its books</h2><br>
+<% @genres.each do |genre| %>
+    <%= link_to genre.name, genre_path(genre) %><br>
+<% end %>

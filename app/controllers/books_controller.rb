@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
-    before_action :find_book, :redirect_if_not_user, only: [:show, :edit, :update, :destroy]
+    before_action :find_book, only: [:show, :edit, :update, :destroy]
+    before_action :redirect_if_not_user, only: [:edit, :update, :destroy]
     
     def index
         @books = Book.all
