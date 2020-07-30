@@ -2,7 +2,7 @@
 <h2> Reading List </h2>
 <div>
 <% @books.each do |book| %>
-  <strong><%= link_to 'book.name', 'book_path(book.id)' %></strong><small>by</small><strong><%= book.author %></strong>
+  <strong><%= link_to book.title, '/books/:id' %></strong><small> by </small><strong><%= book.author %></strong><br>
 <% end %>
 </div> 
 <br><br><strong><%= link_to 'Add a Book', '/books/new' %></strong>

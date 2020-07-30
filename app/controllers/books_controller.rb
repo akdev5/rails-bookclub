@@ -33,8 +33,6 @@ class BooksController < ApplicationController
     end
 
     def show
-        find_book
-        # @book_genres = BooksGenre.where(book_id: params[:id])
     end
 
     def delete
