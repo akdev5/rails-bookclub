@@ -10,13 +10,23 @@ class CommentsController < ApplicationController
     end
 
     def new
+        @comment = Comment.new(book_id: params[:book_id])
+        @book = Book.find(params[:id])
     end
 
     def create
+        @book = Book.find(params[:id])
+        @comment = @book.comments.create(comment_params)
+        @comment.user.id = current_user.id
+        if @comment.save
+            redirect_to book_path(@book)
+        else
+            redirect_to book_path(@book)
+        end
     end
 
     def show
-        @comment = Comment.find(params[:id])
+        find_comment
       end
 
     def edit

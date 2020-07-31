@@ -1,1 +1,6 @@
-<h1> Form for comments </h1>
+<%= form_for [@comment.book, @comment] do |f| %>
+    <%= f.hidden_field :book_id %>
+    <%= f.text_area :content %>
+    <br>
+    <%= f.submit "Comment"%>
+<% end %>

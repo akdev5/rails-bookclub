@@ -7,5 +7,10 @@
 <div>
 <%= @book.description %>
 </div>
-<br><strong><%= link_to 'Add Another Book', '/books/new' %> | <%= link_to 'Edit', edit_book_path(@book) %> | 
+<br>
+
+
+<br><strong><%= link_to 'Add Another Book', '/books/new' %> | 
+<%= link_to "Discuss This Book", new_book_comment_path(@book) %> | 
+<%= link_to 'Edit', edit_book_path(@book) %> | 
 <%= link_to 'Delete', @book, method: :delete, data: {confirm: "Delete this book?"} %></strong>
