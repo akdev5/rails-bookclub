@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
     before_action :find_comment, :redirect_if_not_user, only: [:show, :edit, :update, :destroy]
     
     def index
-        if params[:bookss_id]
+        if params[:books_id]
           @comments = Book.find(params[:book_id]).comments
         else
           @comments = Comment.all
@@ -11,17 +11,16 @@ class CommentsController < ApplicationController
 
     def new
         @comment = Comment.new(book_id: params[:book_id])
-        @book = Book.find(params[:id])
     end
 
     def create
-        @book = Book.find(params[:id])
-        @comment = @book.comments.create(comment_params)
-        @comment.user.id = current_user.id
+        @book = Book.find(params[:book_id])
+        @comment = @book.comments.build(comment_params)
+        @comment.user_id = current_user.id
         if @comment.save
             redirect_to book_path(@book)
         else
-            redirect_to book_path(@book)
+            redirect_to books_path
         end
     end
 
@@ -33,6 +32,12 @@ class CommentsController < ApplicationController
     end
 
     def update
+        @book = Book.find(params[:book_id])
+        if @comment.update(comment_params)
+            redirect_to book_path(@book)
+        else
+            render :edit
+        end
     end
 
     def destroy
@@ -45,6 +50,7 @@ private
     end
 
     def comment_params
+        params.require(:comment).permit(:content, :book_id, user_attributes: [:name])
     end
 
 end

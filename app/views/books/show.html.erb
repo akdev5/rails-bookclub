@@ -5,12 +5,20 @@
 <% end %><br><br>
 
 <div>
+
 <%= @book.description %>
+
 </div>
-<br>
 
-
-<br><strong><%= link_to 'Add Another Book', '/books/new' %> | 
+<br><br><strong><%= link_to 'Add Another Book', '/books/new' %> | 
 <%= link_to "Discuss This Book", new_book_comment_path(@book) %> | 
 <%= link_to 'Edit', edit_book_path(@book) %> | 
 <%= link_to 'Delete', @book, method: :delete, data: {confirm: "Delete this book?"} %></strong>
+
+<div>
+
+<br><br><strong> Comments: </strong><br>
+<% @book.comments.each do |comment| %>
+ <br>"<%= comment.content %>"<i><small> by </small><%= comment.user.name %></i>
+ <br><small><%= link_to 'Edit', edit_comment_path %></small>
+<% end %>
