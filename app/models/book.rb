@@ -6,5 +6,9 @@ class Book < ApplicationRecord
     has_many :users, through: :comments
     
     validates :title, :author, :description, presence: true
+
+    def self.alphabetize
+        self.order(:title)
+    end
         
 end

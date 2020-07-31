@@ -12,8 +12,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
   resources :comments
-  resources :books
+  resources :books do
+    resources :comments
+  end
   resources :genres, only: [:show, :index]
+  
 
   get 'auth/:provider/callback', to: 'sessions#omniauth'
   

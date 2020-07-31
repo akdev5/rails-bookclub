@@ -17,6 +17,12 @@
           <%= link_to "Genres", genres_path, class:"navbar-brand"%> |  
           <%= link_to "Sign Out", signout_path, class:"navbar-brand",method:'delete' %><br></strong>
         <% end %>
+      <% flash.each do |type, msg| %>
+        <br><div class="alert alert-warning" role-"alert" >
+          <%= msg %>
+        </div>
+      <% end %>
     <%= yield %>
+    
   </body>
 </html>

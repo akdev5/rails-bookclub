@@ -3,12 +3,11 @@ class BooksController < ApplicationController
     before_action :redirect_if_not_user, only: [:edit, :update, :destroy]
     
     def index
-        @books = Book.all
+        @books = Book.alphabetize
     end
 
     def new
         @book = Book.new
-        @genres = Genre.all
     end
 
     def create
@@ -53,8 +52,7 @@ private
 
     def redirect_if_not_user
         if @book.user != current_user
-            redirect_to user_path(current_user), alert: "You do not have permission to edit this book."
-            
+            redirect_to user_path(current_user), alert: "Sorry! You do not have permission to edit or delete this book. Here are your books:"  
         end
     end
 
